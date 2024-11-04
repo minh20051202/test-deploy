@@ -1,66 +1,67 @@
-## Foundry
+## Install Foundry
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+```bash
 
-Foundry consists of:
+curl -L https://foundry.paradigm.xyz | bash ##then run
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+foundryup
 
-## Documentation
-
-https://book.getfoundry.sh/
-
-## Usage
-
-### Build
-
-```shell
-$ forge build
 ```
 
-### Test
+## Install libraries
 
-```shell
-$ forge test
+```bash
+
+forge install foundry-rs/forge-std --no--commit
+
+forge install OpenZeppelin/openzeppelin-contracts@v4.3.2 --no-commit
+
 ```
 
-### Format
+## Deployment
 
-```shell
-$ forge fmt
+First, import private key
+
+```bash
+
+cast wallet import defaultKey --interactive
+
 ```
 
-### Gas Snapshots
+Second, set the rpc url in .env file, for example:
 
-```shell
-$ forge snapshot
+```
+SKALE_TITAN_HUB_RPC_URL=https://testnet.skalenodes.com/v1/aware-fake-trim-testnet
+
 ```
 
-### Anvil
+run
 
-```shell
-$ anvil
+```bash
+
+source .env
+
 ```
 
-### Deploy
+then deploy MyNFT contract, replace 0x755... with your public key
 
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
+```bash
+
+forge script DeployMyNFT --account defaultKey --sender 0x755AC4E90c24135f1B7f73AeEA6a7ff42b07dd94 --rpc-url $SKALE_TITAN_HUB_RPC_URL --broadcast --legacy
+
 ```
 
-### Cast
+Third, set your environment variables in .env, see .env.example file, run:
 
-```shell
-$ cast <subcommand>
+```bash
+
+source .env ##then run
+
+forge script DeployMarketplace --account defaultKey --sender 0x755AC4E90c24135f1B7f73AeEA6a7ff42b07dd94 --rpc-url $SKALE_TITAN_HUB_RPC_URL --broadcast --legacy
+
 ```
 
-### Help
+## Contract addresses deployed to Titan AI Hub testnet
 
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+MyNFT contract address: 0xD887c912a722D2AC4ACB21E3a3A774651Bc2cF57
+Marketplace contract address: 0xE782Ed2880675cc398b23FB405EB85E1502F89b5
