@@ -62,5 +62,5 @@ forge script DeployMarketplace --account defaultKey --sender 0x755AC4E90c24135f1
 
 ## Contract addresses deployed to Titan AI Hub testnet
 
-MyNFT contract address: 0xD887c912a722D2AC4ACB21E3a3A774651Bc2cF57 \\
+MyNFT contract address: 0xD887c912a722D2AC4ACB21E3a3A774651Bc2cF57 <br>
 Marketplace contract address: 0xE782Ed2880675cc398b23FB405EB85E1502F89b5
