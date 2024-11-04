@@ -12,13 +12,13 @@ contract DeployMarketplace is Script {
         address feeRecipient = vm.envAddress("FEE_RECIPIENT");
 
         vm.startBroadcast();
-        Marketplace myNFT = new Marketplace(
+        Marketplace marketplace = new Marketplace(
             nftAddress,
             feeDecimal,
             feeRate,
             feeRecipient
         );
         vm.stopBroadcast();
-        return myNFT;
+        return marketplace;
     }
 }
